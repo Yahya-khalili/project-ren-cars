@@ -57,7 +57,7 @@
 
                 <li class="nav-item"><a class="nav-link" href="#aboutUs">About Us</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contactUs">Contact Us</a></li>
             </ul>
           </div>
         </div>
@@ -126,7 +126,7 @@
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Offers</h2>
-              <a href="offers.html">view more <i class="fa fa-angle-right"></i></a>
+              <a href="{{route('indexOffers')}}">view more <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
           <div class="col-md-4">
@@ -382,8 +382,8 @@
     </div>
 
     
-    <div class="send-message" >
-      <div class="container" id="contact">
+    <div class="send-message"  >
+      <div class="container" id="contactUs">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
@@ -425,7 +425,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <img src="assets/images/team_01.jpg" class="img-fluid" alt="">
+            <img src="assets/images/yaha.jpg" class="img-fluid" alt="">
 
             <h5 class="text-center" style="margin-top: 15px;">Yahya khalili</h5>
           </div>

@@ -15,4 +15,5 @@ use App\Http\Controllers\homeContoller;
 */
 
 Route::get('/',[homeContoller::class , "index"]);
+Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
 

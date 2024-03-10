@@ -10,5 +10,9 @@ class homeContoller extends Controller
         return view("frontend.index");
         
     }
+    public function indexOffers(){
+        return view("frontend.offers");
+        
+    }
     
 }
