@@ -14,8 +14,8 @@ use App\Http\Controllers\admin\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/dashboard' , function() {
-    return view('pages.users.user');
+Route::get('/login' , function() {
+    return view("dashboard.login");
 
 });
 Route::get('/',[homeContoller::class , "index"]);

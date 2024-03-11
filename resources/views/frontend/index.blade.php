@@ -204,7 +204,20 @@
 
                        <div class="col-md-6">
                           <fieldset>
+                            <input type="text" class="form-control" placeholder="Enter password" required="">
+                          </fieldset>
+                       </div>
+                  </div>
+                  <div class="row">
+                       <div class="col-md-6">
+                          <fieldset>
                             <input type="text" class="form-control" placeholder="Enter phone" required="">
+                          </fieldset>
+                       </div>
+
+                       <div class="col-md-6">
+                          <fieldset>
+                            <input type="text" class="form-control" placeholder="Enter cin" required="">
                           </fieldset>
                        </div>
                   </div>
