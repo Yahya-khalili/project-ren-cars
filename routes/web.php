@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeContoller;
+use App\Http\Controllers\admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,11 @@ use App\Http\Controllers\homeContoller;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/dashboard/login' , function() {
-    return view('dashboard.login');
+Route::get('/dashboard' , function() {
+    return view('pages.users.user');
 
 });
 Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
 
+Route::get('/dashboard/user',[userController::class , "index"])->name('user.index');
