@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeContoller;
 
 use App\Http\Controllers\admin\userController as AdminUserController;
+use App\Http\Controllers\admin\CarController as AdminCarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::prefix('dashboard')->group(function () {
         ],
 
     ]);
+    Route::resource('cars', AdminCarController::class);
     Route::get('search',[AdminUserController::class , "search"])->name('user.search');
 
 });

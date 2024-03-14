@@ -11,7 +11,7 @@ class carRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class carRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'type' => 'required|string|max:255',
+            'marque' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming image upload
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|string|max:500',
+
         ];
     }
 }

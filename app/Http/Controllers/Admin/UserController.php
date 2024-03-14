@@ -16,7 +16,8 @@ class userController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('pages.users.user' , compact('users'));
+        $isUpdate = true;
+        return view('pages.users.user' , compact('users' , "isUpdate"));
     }
 
     /**
@@ -33,7 +34,7 @@ class userController extends Controller
     public function store(RequestsUserRequest $request)
     {
         $FormFielsd = $request->validated();
-        User::create($FormFielsd);
+         User::create($FormFielsd);
         return redirect('/dashboard/user');
     }
 
