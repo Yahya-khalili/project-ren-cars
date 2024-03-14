@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeContoller;
-use App\Http\Controllers\admin\UserController;
+
+use App\Http\Controllers\admin\userController as AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,21 @@ Route::get('/login' , function() {
 Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
 
-Route::get('/dashboard/user',[userController::class , "index"])->name('user.index');
+Route::prefix('dashboard')->group(function () {
+
+    Route::resource('user', AdminUserController::class, [
+        'names' => [
+            'index' => 'user.index',
+            'create' => 'user.create',
+            'store' => 'user.store',
+            'show' => 'user.show',
+            'edit' => 'user.edit',
+            'update' => 'user.update',
+            'destroy' => 'user.destroy',
+            'search' => 'user.search',
+        ],
+
+    ]);
+    Route::get('search',[AdminUserController::class , "search"])->name('user.search');
+
+});
