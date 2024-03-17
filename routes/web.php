@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeContoller;
 
@@ -24,21 +25,12 @@ Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
 
 Route::prefix('dashboard')->group(function () {
-
-    Route::resource('user', AdminUserController::class, [
-        'names' => [
-            'index' => 'user.index',
-            'create' => 'user.create',
-            'store' => 'user.store',
-            'show' => 'user.show',
-            'edit' => 'user.edit',
-            'update' => 'user.update',
-            'destroy' => 'user.destroy',
-            'search' => 'user.search',
-        ],
-
-    ]);
+    Route::resource('user', AdminUserController::class);
     Route::resource('cars', AdminCarController::class);
+    Route::resource("brand",BrandController::class);
+    
+    Route::get('searchBrand',[BrandController::class ,"searchBrand"])->name('brand.search');
+    Route::get('searchCars',[AdminCarController::class ,"searchCars"])->name('cars.search');
     Route::get('search',[AdminUserController::class , "search"])->name('user.search');
 
 });

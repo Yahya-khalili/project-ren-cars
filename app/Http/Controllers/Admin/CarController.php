@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Http\Requests\carRequest as RequestsCarRequest;
+use App\Models\Brand;
+use App\Models\vehicle;
 
 class CarController extends Controller
 {
@@ -14,8 +16,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        
-        return view('pages.cars.cars');
+        $cars = Car::all();
+        $brands = Brand::all();
+        return view('pages.cars.cars',compact('cars','brands') );
     }
 
     /**
@@ -33,7 +36,7 @@ class CarController extends Controller
     {
         $formFields = $request->validated();
         if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('product', 'public');
+            $formFields['image'] = $request->file('image')->store('cars', 'public');
         }
 
         Car::create($formFields);
@@ -60,9 +63,14 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RequestsCarRequest $request, Car $car)
     {
-        //
+        $FormFielsd = $request->validated();
+        if($request->hasFile("image")){
+            $FormFielsd["image"] = $request->file('image')->store('cars' ,"public");
+        }
+        $car->fill($FormFielsd )->save();
+        return redirect('/dashboard/cars');
     }
 
     /**
@@ -71,6 +79,17 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         $car->delete();
-        return redirect('/dashboard/cars');
+        return redirect()->route('cars.index')->with('success', 'Book deleted successfully');
     }
+    public function searchCars(Request $request){
+        $brands = Brand::all();
+        $search = $request->search;
+        $cars = Car::where("type" ,"like" ,"%".$search."%")->get();
+        $noTasksFound = $cars->isEmpty();
+        session()->flash('noTasksFound', $noTasksFound);
+
+        return view('pages.cars.cars' , compact("cars" , "search" , "noTasksFound" ,"brands"));
+    }
+
+   
 }

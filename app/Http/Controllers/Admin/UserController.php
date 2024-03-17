@@ -34,7 +34,7 @@ class userController extends Controller
     public function store(RequestsUserRequest $request)
     {
         $FormFielsd = $request->validated();
-         User::create($FormFielsd);
+        User::create($FormFielsd);
         return redirect('/dashboard/user');
     }
 
@@ -60,7 +60,7 @@ class userController extends Controller
     public function update(RequestsUserRequest $request, User $user)
     {
         $FormFielsd = $request->validated();
-        dd($FormFielsd);
+        $user->fill($FormFielsd )->save();
         return redirect('/dashboard/user');
 
     }
