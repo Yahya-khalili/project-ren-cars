@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Admin extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pick-up-date',
-        'return-date-time',
-        'pick-up-location',
-        'return-location',
+        "name",
+        'email',
+        'password',
     ];
 }

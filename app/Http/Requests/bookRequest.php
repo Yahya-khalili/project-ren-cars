@@ -11,7 +11,7 @@ class bookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class bookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id',
+            'car_id' => 'required|exists:cars,id',
+            'pick_up_date' => 'required|date',
+            'return_date' => 'required|date',
+            'pick_up_and_return_location' => 'required|string|max:255',
+
         ];
     }
 }

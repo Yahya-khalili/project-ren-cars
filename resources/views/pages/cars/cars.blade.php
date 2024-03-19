@@ -48,6 +48,10 @@
                               </select>
                         </div>
                         <div>
+                            <label for="nameCar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Car name  :</label>
+                             <input type="text" id="nameCar" name="nameCar" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="car name" required />
+                        </div>
+                        <div>
                             <label for="brand_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand :</label>
                             <select id="brand_id"  name="brand_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Choose a brand</option>
@@ -113,6 +117,7 @@
             <tr>
                 <th scope="col" class="px-6 py-3">id</th>
                 <th scope="col" class="px-6 py-3">type</th>
+                <th scope="col" class="px-6 py-3">car name </th>
                 <th scope="col" class="px-6 py-3">brand</th>
                 <th scope="col" class="px-6 py-3">price</th>
                 <th scope="col" class="px-6 py-3">description</th>
@@ -124,6 +129,7 @@
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{$car->id}} </td>
             <td class="px-6 py-4"> {{$car->type}} </td>
+            <td class="px-6 py-4"> {{$car->nameCar}} </td>
             <td class="px-6 py-4">{{$car->brand?->marque}}</td>
             <td class="px-6 py-4"> {{$car->price}} </td>
             <td class="px-6 py-4"> {{substr($car->description , 0,10)}}... </td>
@@ -168,6 +174,10 @@
                             <option value="essence" {{ $car->type === 'essence' ? 'selected' : '' }}>L'essence</option>
                             <option value="Diesel" {{ $car->type === 'Diesel' ? 'selected' : '' }}>Diesel</option>
                         </select>
+                                </div>
+                                <div>
+                                    <label for="nameCar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Car name  :</label>
+                                     <input type="text" id="nameCar" value="{{$car->nameCar}}" name="nameCar" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="car name" required />
                                 </div>
                                 <div>
                                     <label for="brand_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand :</label>

@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <title> @yield('title') | {{ config("app.name") }}</title>
+    <title> login | {{ config("app.name") }}</title>
+  
+
     
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
-    
+  @section('title' , "login ")
 
     <style>
         .login_img_section {
@@ -33,7 +35,8 @@
                 </div>
                 <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
                   <div class="w-full px-8 md:px-32 lg:px-24">
-                  <form class="bg-white rounded-md shadow-2xl p-5">
+                  <form class="bg-white rounded-md shadow-2xl p-5" method="POST" action="{{ route("login") }}">
+                    @csrf
                     <h1 class="text-gray-800 font-bold text-2xl mb-1">Welcome Back Boss!</h1>
                     
                     <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
@@ -53,7 +56,7 @@
                     <div class="flex justify-between mt-4">
                       <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Forgot Password ?</span>
       
-                      <a href="#" class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Don't have an account yet?</a>
+                      
                     </div>
                     
                   </form>

@@ -12,6 +12,7 @@ class Car extends Model
     use SoftDeletes;
     protected $fillable = [
         'type',
+        'nameCar',
         'marque',
         'image',
         'price',
