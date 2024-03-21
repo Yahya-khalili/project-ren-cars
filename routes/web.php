@@ -28,15 +28,22 @@ Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers"
 Route::get('/login',[adminController::class , "show"])->name("login.show");
 Route::post('/Login',[adminController::class , "login"])->name("login");
 
+Route::middleware(['admin'])->group(function () {
+    // Admin routes that require authentication
+
+
+});
 Route::prefix('dashboard')->group(function () {
     Route::resource('user', AdminUserController::class);
     Route::resource('cars', AdminCarController::class);
     Route::resource("brand",BrandController::class);
     Route::resource("book",BookController::class);
-    
+
     Route::get('searchBrand',[BrandController::class ,"searchBrand"])->name('brand.search');
     Route::get('searchBooking',[BookController::class ,"searchBooking"])->name('book.search');
     Route::get('searchCars',[AdminCarController::class ,"searchCars"])->name('cars.search');
     Route::get('search',[AdminUserController::class , "search"])->name('user.search');
 
 });
+
+

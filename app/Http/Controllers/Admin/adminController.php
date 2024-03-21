@@ -12,19 +12,30 @@ class adminController extends Controller
     }
     public function login(Request $request)
     {
-        $login = $request->email;
-        $password = $request->password;
-        $credentials = ['email' => $login , "password" => $password];
-        dd(Auth::attempt($credentials));
+       // Define default email and password
+       $defaultEmail = 'admin@admin.com';
+       $defaultPassword = 'admin12';
+
+       // Check if the provided email and password match the defaults
+       if ($request->email == $defaultEmail && $request->password == $defaultPassword) {
+           // Authentication successful, log in the admin
+            
+           // Redirect to the admin dashboard or perform any other action
+           return redirect('/dashboard/user');
+       } else {
+           // Authentication failed, redirect back with error message
+           return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
+       }
 
 
     }
-    public function logout()
+    public function logout(Request $request)
     {
-        Session::flush();
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        Auth::logout();
-
-        return to_route('login')->with('success', 'Vous êtes bien déconnecté.');
+        // Redirect to the admin login page after logout
+        return redirect()->route('login');
     }
 }

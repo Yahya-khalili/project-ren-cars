@@ -91,5 +91,5 @@ class CarController extends Controller
         return view('pages.cars.cars' , compact("cars" , "search" , "noTasksFound" ,"brands"));
     }
 
-   
+
 }
