@@ -23,6 +23,7 @@ use App\Http\Controllers\admin\adminController;
 
 Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
+Route::get('/dashboard',[homeContoller::class , "indexDash"])->name("indexDash");
 
 
 Route::get('/login',[adminController::class , "show"])->name("login.show");

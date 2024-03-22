@@ -15,9 +15,9 @@ class userController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $isUpdate = true;
-        return view('pages.users.user' , compact('users' , "isUpdate"));
+        $users = User::paginate(4);
+        
+        return view('pages.users.user' , compact('users'));
     }
 
     /**

@@ -176,6 +176,8 @@
             @endforeach
         </tbody>
     </table>
+    
+    {{ $users->links()  }}
     <div>
         <script>
             document.querySelectorAll('[data-modal-target="update"]').forEach(item => {

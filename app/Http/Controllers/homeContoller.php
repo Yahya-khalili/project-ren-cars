@@ -14,5 +14,8 @@ class homeContoller extends Controller
         return view("frontend.offers");
         
     }
+    public function indexDash(){
+        return view('dashboard.index');
+    }
     
 }
