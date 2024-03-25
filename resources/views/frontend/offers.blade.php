@@ -114,16 +114,20 @@
     <div class="latest-products" id="offers">
       <div class="container">
         <div class="row">
+          @foreach ($cars as $car)
+              
+          
           <div class="col-md-4">
           <div class="product-item">
-              <img src="assets/images/product-1-370x270.jpg" alt="">
+              <img src={{asset("storage/$car->image")}} alt="">
 
               <div class="down-content">
-                <h4>Large: Premium</h4>
+                <h4>type: {{$car->type}}</h4>
+                
 
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
+                <h6><small>from </small> ${{$car->price}}<small> per weekend</small></h6>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+                <p>{{$car->description}}</p>
 
                 <small>
                     <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -138,6 +142,7 @@
               </div>
             </div>
           </div>
+          @endforeach
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">

@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
+
 
 class homeContoller extends Controller
 {
     public function index(){
-        return view("frontend.index");
+        $cars = Car::latest()->take(3)->get();
+        return view("frontend.index" , compact("cars"));
         
     }
     public function indexOffers(){
-        return view("frontend.offers");
+        $cars = Car::all();
+        return view("frontend.offers" ,compact("cars"));
         
     }
     public function indexDash(){

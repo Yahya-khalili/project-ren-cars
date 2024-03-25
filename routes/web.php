@@ -28,10 +28,11 @@ Route::get('/dashboard',[homeContoller::class , "indexDash"])->name("indexDash")
 
 Route::get('/login',[adminController::class , "show"])->name("login.show");
 Route::post('/Login',[adminController::class , "login"])->name("login");
+Route::get('/logout',[adminController::class , "logout"])->name("logout");
 
 Route::middleware(['admin'])->group(function () {
     // Admin routes that require authentication
-
+ 
 
 });
 Route::prefix('dashboard')->group(function () {
@@ -46,5 +47,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get('search',[AdminUserController::class , "search"])->name('user.search');
 
 });
+
 
 

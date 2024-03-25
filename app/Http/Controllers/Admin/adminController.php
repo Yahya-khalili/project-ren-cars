@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,16 +13,17 @@ class adminController extends Controller
     }
     public function login(Request $request)
     {
-       // Define default email and password
-       $defaultEmail = 'admin@admin.com';
-       $defaultPassword = 'admin12';
+        $login = $request->email;
+        $password = $request->password;
+        $credentials = ['email' => $login , "password" => $password];
 
        // Check if the provided email and password match the defaults
-       if ($request->email == $defaultEmail && $request->password == $defaultPassword) {
+       if (Auth::attempt($credentials)) {
            // Authentication successful, log in the admin
-            
+           
+           return redirect('/dashboard');
            // Redirect to the admin dashboard or perform any other action
-           return redirect('/dashboard/user');
+           
        } else {
            // Authentication failed, redirect back with error message
            return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
@@ -29,13 +31,15 @@ class adminController extends Controller
 
 
     }
-    public function logout(Request $request)
+    public function logout( )
     {
-        Auth::guard('admin')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        
+        Session::flush();
+        
+        Auth::logout();
+        
 
         // Redirect to the admin login page after logout
-        return redirect()->route('login');
+        return redirect('/login');
     }
 }

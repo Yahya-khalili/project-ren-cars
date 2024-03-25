@@ -25,7 +25,7 @@ class carRequest extends FormRequest
             'type' => 'required|string|max:255',
             'nameCar' => 'required|string|max:255',
             'brand_id' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming image upload
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', // Assuming image upload
             'price' => 'required|numeric|min:0',
             'description' => 'required|string|max:500',
 
