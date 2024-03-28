@@ -36,7 +36,7 @@
                 
                 <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
                   <div class="w-full px-8 md:px-32 lg:px-24">
-                  <form class="bg-white rounded-md shadow-2xl p-5" method="POST" action="{{ route("login") }}">
+                  <form class="bg-white rounded-md shadow-2xl p-5" method="post" action="{{ route("login") }}">
                     @csrf
                     <h1 class="text-gray-800 font-bold text-2xl mb-1">Welcome Back Boss!</h1><br>
                     
@@ -48,9 +48,9 @@
                     </div>
                     <ul class="list-disc list-inside text-sm text-red-600">
                       @foreach ($errors->all() as $error)
-                          @if (strpos($error, 'email') !== false)
+                          
                               <li>{{ $error }}</li>
-                          @endif
+                          
                       @endforeach
                   </ul>
                     <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">

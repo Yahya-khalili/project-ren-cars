@@ -20,6 +20,6 @@ class admin
             // User is authenticated as an admin, allow access to the route
             return $next($request);
         }
-        return redirect()->route('login');
+        return redirect("/login");
     }
 }
