@@ -119,7 +119,7 @@
           
           <div class="col-md-4">
           <div class="product-item">
-              <img src={{asset("storage/$car->image")}} alt="">
+              <img height="250px" src={{asset("storage/$car->image")}} alt="">
 
               <div class="down-content">
                 <h4>type: {{$car->type}}</h4>
