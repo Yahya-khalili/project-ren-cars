@@ -18,7 +18,7 @@ class adminController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
             // Authentication passed
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard/user');
         } else {
             // Authentication failed
             return back()->withErrors(['email' => 'Invalid credentials']);

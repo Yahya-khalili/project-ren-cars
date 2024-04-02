@@ -58,6 +58,9 @@
                 <li class="nav-item"><a class="nav-link" href="#aboutUs">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="#contactUs">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route("indexDash")}}">login</a></li>
+                
+                
             </ul>
           </div>
         </div>
@@ -469,7 +472,9 @@
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright © 2020 Drive With Yahya</p>
+              <p>Copyright © 2020 Drive With Yahya |<a href="{{route("indexDash")}}">admin</a> </p>
+              
+
             </div>
           </div>
         </div>

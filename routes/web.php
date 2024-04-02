@@ -8,7 +8,7 @@ use App\Http\Controllers\admin\userController as AdminUserController;
 use App\Http\Controllers\admin\CarController as AdminCarController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\adminController;
-
+use App\Http\Controllers\auth\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,8 @@ use App\Http\Controllers\admin\adminController;
 
 Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
+
+Route::get('/user',[loginController::class , "index"])->name("login.user");
 
 
 Route::get('/login',[adminController::class , "show"])->name("login.show");

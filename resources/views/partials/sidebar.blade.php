@@ -9,7 +9,7 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-700 dark:bg-gray-900">
         <ul class="space-y-2 font-medium">
             <li class="mb-4">
-                <a href="{{route("indexDash")}}" class="flex items-center p-2 text-gray-200 rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 group">
+                <a href="" class="flex items-center p-2 text-gray-200 rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 group">
                     <svg class="h-12 w-12 text-blue-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="13" r="2" />  <line x1="13.45" y1="11.55" x2="15.5" y2="9.5" />  <path d="M6.4 20a9 9 0 1 1 11.2 0Z" /></svg>
                     <span class="ms-3 text-lg font-bold text-gray-200 dark:text-gray-300">Dashboard</span>
                 </a>
