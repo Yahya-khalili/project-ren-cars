@@ -24,7 +24,8 @@ use App\Http\Controllers\auth\loginController;
 Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
 
-Route::get('/user',[loginController::class , "index"])->name("login.user");
+Route::get('/user/login', [LoginController::class, 'index'])->name('login.user');
+Route::get('/user/register', [LoginController::class, 'index'])->name('register.user');
 
 
 Route::get('/login',[adminController::class , "show"])->name("login.show");

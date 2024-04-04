@@ -65,32 +65,7 @@
     </header>
     <!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Get all the links in the navigation
-        var navLinks = document.querySelectorAll('.navbar-nav a');
 
-        // Loop through each link
-        navLinks.forEach(function (link) {
-            // Add a click event listener to each link
-            link.addEventListener('click', function (event) {
-                // Prevent the default behavior of the link
-                event.preventDefault();
-
-                // Get the target element's ID from the href attribute
-                var targetId = this.getAttribute('href');
-
-                // Scroll smoothly to the target element
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-
-                // Close the navbar menu if it's open (for small screens)
-                document.querySelector('.navbar-toggler').click();
-            });
-        });
-    });
-</script>
 
 
 <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">

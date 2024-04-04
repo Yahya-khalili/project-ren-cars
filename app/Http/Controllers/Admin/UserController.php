@@ -73,6 +73,7 @@ class userController extends Controller
         $user->delete();
         return redirect('/dashboard/user');
     }
+    
     public function search(Request $request){
         $search = $request->search;
         $users = User::where("fullName" ,"like" ,"%".$search."%")->get();

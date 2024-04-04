@@ -57,8 +57,11 @@
 
                 <li class="nav-item"><a class="nav-link" href="#aboutUs">About Us</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="#contactUs">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route("indexDash")}}">login</a></li>
+                <li class="nav-item" id="yahya"><a class="nav-link" href="#contactUs">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('login.user') }}">login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('register.user') }}">register</a></li>
+
+
                 
                 
             </ul>
@@ -68,32 +71,6 @@
     </header>
     <!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Get all the links in the navigation
-        var navLinks = document.querySelectorAll('.navbar-nav a');
-
-        // Loop through each link
-        navLinks.forEach(function (link) {
-            // Add a click event listener to each link
-            link.addEventListener('click', function (event) {
-                // Prevent the default behavior of the link
-                event.preventDefault();
-
-                // Get the target element's ID from the href attribute
-                var targetId = this.getAttribute('href');
-
-                // Scroll smoothly to the target element
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-
-                // Close the navbar menu if it's open (for small screens)
-                document.querySelector('.navbar-toggler').click();
-            });
-        });
-    });
-</script>
 
 
 
