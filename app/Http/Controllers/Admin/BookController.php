@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Car;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\PDF  ;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
@@ -90,6 +92,28 @@ class BookController extends Controller
         session()->flash('noTasksFound', $noTasksFound);
 
         return view('pages.books.book' , compact("bookings","cars" ,"users", "search" , "noTasksFound"));
+    }
+
+    public function generateBill($id)
+    {
+        // Fetch the data for the specific column using the $id
+        
+        $booking = Booking::find($id);
+        $date = Carbon::now()->format('d-m-Y');
+        
+        if (!$booking) {
+            // Handle case where booking is not found
+            return redirect()->back()->with('error', 'Booking not found.');
+        }
+        
+        
+
+        $pdf = PDF::loadView('pages.books.usersPdf', compact('booking' ,"date"));
+
+    // Download the PDF
+    return $pdf->download('invoice.pdf');
+        // Check if the invoice exists
+        
     }
 
 }

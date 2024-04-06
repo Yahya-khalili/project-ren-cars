@@ -173,6 +173,11 @@
                         <!-- Update Button -->
                         <button data-modal-target="update{{ $book->id }}" data-modal-toggle="update{{ $user->id }}" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline ml-2" 
                              >Update</button>
+                             <form method="POST"  action="{{ route("pdf" , $book) }}" style="display: inline;">
+                                
+                                @csrf
+                                <button type="submit" value="delete" class="font-medium text-red-600 dark:text-red-500 hover:underline">get bill</button>
+                            </form>
                         
                     </td>
                 </tr>

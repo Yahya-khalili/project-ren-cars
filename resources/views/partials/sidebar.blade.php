@@ -9,7 +9,7 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-700 dark:bg-gray-900">
         <ul class="space-y-2 font-medium">
             <li class="mb-4">
-                <a href="" class="flex items-center p-2 text-gray-200 rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 group">
+                <a href="{{route('indexDash')}}" class="flex items-center p-2 text-gray-200 rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 group">
                     
                     <span class="ms-3 text-lg font-bold text-gray-200 dark:text-gray-300"> Admin Dashboard</span>
                 </a>

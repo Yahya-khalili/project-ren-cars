@@ -21,7 +21,7 @@ class adminController extends Controller
             return redirect()->intended('/dashboard/user');
         } else {
             // Authentication failed
-            return back()->withErrors(['email' => 'Invalid credentials']);
+            return back()->withErrors(['email' => 'Invalid Email' , "password"=>'Invalid password']);
         }
 
 

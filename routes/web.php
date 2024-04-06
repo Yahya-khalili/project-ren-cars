@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\CarController as AdminCarController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\auth\loginController;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,15 @@ use App\Http\Controllers\auth\loginController;
 Route::get('/',[homeContoller::class , "index"]);
 Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
 
-Route::get('/user/login', [LoginController::class, 'index'])->name('login.user');
-Route::get('/user/register', [LoginController::class, 'index'])->name('register.user');
+
+
 
 
 Route::get('/login',[adminController::class , "show"])->name("login.show");
 Route::post('/Login',[adminController::class , "login"])->name("login");
 Route::get('/logout',[adminController::class , "logout"])->name("logout");
+
+Route::post('generate-pdf/{id}', [BookController::class, 'generateBill'])->name('pdf');
 
 
 Route::middleware(['admin'])->group(function () {

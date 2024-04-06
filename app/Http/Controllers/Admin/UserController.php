@@ -35,7 +35,7 @@ class userController extends Controller
     {
         $FormFielsd = $request->validated();
         User::create($FormFielsd);
-        return redirect('/dashboard/user');
+        return  redirect()->back();
     }
 
     /**
