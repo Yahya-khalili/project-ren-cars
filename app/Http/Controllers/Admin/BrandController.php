@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class BrandController extends Controller
 {
@@ -77,6 +78,16 @@ class BrandController extends Controller
         session()->flash('noTasksFound', $noTasksFound);
 
         return view('pages.brands.brand' , compact("brands" , "search" , "noTasksFound"));
+    }  
+    public function exportPdf()
+    {
+        $brands = Brand::all();
+
+        // Generate PDF
+        $pdf = PDF::loadView('pages.brands.pdfBrand', compact("brands"));
+        
+        // Download PDF
+        return $pdf->download('brands_list.pdf');
     }
 
 }

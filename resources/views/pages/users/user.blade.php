@@ -24,10 +24,14 @@
 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All Clients</h1> <br>
 <div class="relative overflow-x-auto">
     <div class="flex justify-between items-center mb-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
-        <!-- Add Client Button -->
-        <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-blue-900 dark:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-            Add Client
-        </button>
+        <!-- Buttons Container -->
+        <div class="flex space-x-4">
+            <!-- Add Client Button -->
+            <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                Add Client
+            </button>
+            <a href="{{route("pdf.users")}}" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Export pdf</a>
+        </div>
     
         <!-- Search Bar -->
         <form class="flex items-center" method="get" action="{{route('user.search')}}">   
@@ -40,6 +44,7 @@
             </button>
         </form>
     </div>
+    
     
 
 
@@ -136,11 +141,11 @@
                             @method("DELETE")
                             @csrf
                            
-                            <button type="submit" value="delete" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                            <button type="submit" value="delete" class="px-4 py-2 bg-red-500 text-white font-medium rounded-md transition-colors duration-300 ease-in-out hover:bg-red-600">Delete</button>
                         </form>
                         <!-- Update Button -->
                         
-                        <button data-modal-target="update{{ $user->id }}" data-modal-toggle="update{{ $user->id }}" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline ml-2" 
+                        <button data-modal-target="update{{ $user->id }}" data-modal-toggle="update{{ $user->id }}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" 
                         data-user-id="{{ $user->id }}" 
                         data-user-fullName="{{ $user->fullName }}" 
                         data-user-cin="{{ $user->cin }}" 

@@ -9,6 +9,8 @@ use App\Http\Controllers\admin\CarController as AdminCarController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\auth\loginController;
+use App\Http\Controllers\User\LoginUserController;
+use App\Http\Controllers\User\registerUserController;
 use App\Http\Controllers\UserAuthController;
 
 /*
@@ -35,12 +37,22 @@ Route::get('/logout',[adminController::class , "logout"])->name("logout");
 
 Route::post('generate-pdf/{id}', [BookController::class, 'generateBill'])->name('pdf');
 
+Route::get('/user/register',[registerUserController::class , "index"])->name("register.index");
+Route::post('/user/register',[registerUserController::class , "store"])->name("register.store");
+Route::get('/user/login',[LoginUserController::class , "index"])->name("login.index");
+Route::post('/user/login',[LoginUserController::class , "login"])->name("login.login");
+Route::get('/user/logout',[LoginUserController::class , "logout"])->name("logout.logout");
+
 
 Route::middleware(['admin'])->group(function () {
 Route::get('/dashboard',[homeContoller::class , "indexDash"])->name("indexDash");
 
     // Admin routes that require authentication
     Route::prefix('dashboard')->group(function () {
+        Route::get('/userAuth',[registerUserController::class , "create"])->name("register.create");
+        Route::delete('/userAuth/{client}',[registerUserController::class , "destroy"])->name("register.destroy");
+
+
         Route::resource('user', AdminUserController::class);
         Route::resource('cars', AdminCarController::class);
         Route::resource("brand",BrandController::class);
@@ -50,6 +62,13 @@ Route::get('/dashboard',[homeContoller::class , "indexDash"])->name("indexDash")
         Route::get('searchBooking',[BookController::class ,"searchBooking"])->name('book.search');
         Route::get('searchCars',[AdminCarController::class ,"searchCars"])->name('cars.search');
         Route::get('search',[AdminUserController::class , "search"])->name('user.search');
+
+        Route::post('generate-pdf/{id}', [BookController::class, 'generateBill'])->name('pdf');
+        Route::get('bookings/pdff', [BookController::class, 'exportPdf'])->name('pdf.book');
+        
+        Route::get('users/pdf', [AdminUserController::class, 'exportPdf'])->name('pdf.users');
+        Route::get('brands/pdf', [BrandController::class, 'exportPdf'])->name('pdf.brand');
+        Route::get('pdf', [AdminCarController::class, 'exportPdfcar'])->name('pdf.cars');
     
     });
 

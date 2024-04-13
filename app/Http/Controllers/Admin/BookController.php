@@ -99,6 +99,9 @@ class BookController extends Controller
         // Fetch the data for the specific column using the $id
         
         $booking = Booking::find($id);
+        $lastInvoiceId = Booking::max('id'); // Get the highest invoice ID from the database
+        $nextInvoiceId = $lastInvoiceId + 1; // Increment by 1 to generate the next invoice ID
+        $invoiceId = 'INV-' . str_pad($nextInvoiceId, 5, '0', STR_PAD_LEFT); // Format as 'INV-00001'
         $date = Carbon::now()->format('d-m-Y');
         
         if (!$booking) {
@@ -108,12 +111,26 @@ class BookController extends Controller
         
         
 
-        $pdf = PDF::loadView('pages.books.usersPdf', compact('booking' ,"date"));
+        $pdf = PDF::loadView('pages.books.usersPdf', compact('booking' ,"date" , "invoiceId"));
 
     // Download the PDF
-    return $pdf->download('invoice.pdf');
+    return $pdf->download('bill.pdf');
         // Check if the invoice exists
         
+    }
+
+    public function exportPdf()
+    {
+        $bookings = Booking::all();
+        
+
+        
+
+        // Generate PDF
+        $pdf = PDF::loadView('pages.books.pdfBookings', compact("bookings"));
+        
+        // Download PDF
+        return $pdf->download('bookings_list.pdf');
     }
 
 }

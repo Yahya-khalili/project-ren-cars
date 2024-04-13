@@ -7,6 +7,7 @@ use App\Http\Requests\userRequest;
 use App\Http\Requests\UserRequest as RequestsUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class userController extends Controller
 {
@@ -81,5 +82,16 @@ class userController extends Controller
         session()->flash('noTasksFound', $noTasksFound);
 
         return view('pages.users.user' , compact("users" , "search" , "noTasksFound"));
+    }
+
+    public function exportPdf()
+    {
+        $users = User::all();
+
+        // Generate PDF
+        $pdf = PDF::loadView('pages.users.pdf', compact("users"));
+        
+        // Download PDF
+        return $pdf->download('users_list.pdf');
     }
 }

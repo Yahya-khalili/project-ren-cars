@@ -21,6 +21,13 @@
                 </a>
             </li> <br>
             <li>
+            <li>
+                <a href="{{route("register.create")}}" class="flex items-center p-2 text-gray-200 rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 group">
+                    <svg class="h-8 w-8 text-slate-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <path d="M16 3.13a4 4 0 0 1 0 7.75" />  <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                </a>
+            </li> <br>
+            <li>
                 <a href="{{route('cars.index')}}" class="flex items-center p-2 text-gray-200 rounded-lg dark:text-white hover:bg-gray-600 dark:hover:bg-gray-800 group">
                     <svg class="h-8 w-8 text-slate-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="7" cy="17" r="2" />  <circle cx="17" cy="17" r="2" />  <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" /></svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Cars</span>

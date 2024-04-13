@@ -57,9 +57,24 @@
 
                 <li class="nav-item"><a class="nav-link" href="#aboutUs">About Us</a></li>
                 
-                <li class="nav-item" id="yahya"><a class="nav-link" href="#contactUs">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" >login</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#register">register</a></li>
+                <li class="nav-item" id="yahya"><a class="nav-link" >Contact Us</a></li>
+                @auth('client')
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong title="passegengers"><i class="fa fa-user"></i></strong> {{ auth()->guard('client')->user()->fullName }}</a>
+                  
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="">profile</a>
+                    <a class="dropdown-item" href="{{route("logout.logout")}}">bookings</a>
+                    <a class="dropdown-item" href="{{route("logout.logout")}}">logout</a>
+                    
+                    
+                  </div>
+                </li>
+                @else
+                <li class="nav-item"><a class="nav-link" href="{{route("login.index")}}" >login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route("register.index")}}" >register</a></li>
+                
+                @endauth
 
             </ul>
             

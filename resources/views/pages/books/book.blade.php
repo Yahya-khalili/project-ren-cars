@@ -24,14 +24,19 @@
 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All Bookings</h1> <br>
 <div class="relative overflow-x-auto">
     <div class="flex justify-between items-center mb-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
-        <!-- Add Client Button -->
-        <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-blue-900 dark:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-            Add a booking 
-        </button>
+        <!-- Buttons Container -->
+        <div class="flex">
+            <!-- Add Brand Button -->
+            <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                Add a Booking
+            </button>
+            <!-- Export PDF Link -->
+            <a href="{{ route("pdf.book") }}" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Export pdf</a>
+        </div>
     
         <!-- Search Bar -->
-        <form class="flex items-center" action="{{ route("book.search") }}" method="get" >   
-            <input type="text" id="simple-search" name="search" value="{{isset($search) ? $search : ''}}" class="bg-gray-200 dark:bg-gray-600 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-300 ease-in-out" placeholder="Search for a booking">
+        <form class="flex items-center" action="{{ route('book.search') }}" method="get">   
+            <input type="text" id="simple-search" name="search" value="{{ isset($search) ? $search : '' }}" class="bg-gray-200 dark:bg-gray-600 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-300 ease-in-out" placeholder="Search for a brand">
             <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition duration-300 ease-in-out">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
@@ -40,6 +45,8 @@
             </button>
         </form>
     </div>
+    
+    
     
 
 
@@ -165,19 +172,24 @@
                 <td class="px-6 py-4">
                     
                         <!-- Delete Form -->
-                        <form method="POST"  action="{{ route("book.destroy" , $book) }}" style="display: inline;">
+                        <form method="POST" action="{{ route("book.destroy", $book) }}" class="inline-block">
                             @method("DELETE")
                             @csrf
-                            <button type="submit" value="delete" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                            <button type="submit" class="px-4 py-2 bg-red-500 text-white font-medium rounded-md transition-colors duration-300 ease-in-out hover:bg-red-600">Delete</button>
                         </form>
+                        
                         <!-- Update Button -->
-                        <button data-modal-target="update{{ $book->id }}" data-modal-toggle="update{{ $user->id }}" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline ml-2" 
-                             >Update</button>
-                             <form method="POST"  action="{{ route("pdf" , $book) }}" style="display: inline;">
-                                
-                                @csrf
-                                <button type="submit" value="delete" class="font-medium text-red-600 dark:text-red-500 hover:underline">get bill</button>
-                            </form>
+                        <button data-modal-target="update{{ $book->id }}" data-modal-toggle="update{{ $user->id }}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                            Update
+                        </button>
+                        
+                        <form method="POST" action="{{ route("pdf", $book) }}" class="inline-block">
+                            @csrf
+                            <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Get Bill</button>
+                        </form>
+                        
+                        
+                        
                         
                     </td>
                 </tr>

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Http\Requests\carRequest as RequestsCarRequest;
 use App\Models\Brand;
-use App\Models\vehicle;
+
+use Barryvdh\DomPDF\Facade\PDF;
 
 class CarController extends Controller
 {
@@ -89,6 +90,17 @@ class CarController extends Controller
         session()->flash('noTasksFound', $noTasksFound);
 
         return view('pages.cars.cars' , compact("cars" , "search" , "noTasksFound" ,"brands"));
+    }
+
+    public function exportPdfcar()
+    {
+        $cars = Car::all();
+
+        // Generate PDF
+        $pdf = PDF::loadView('pages.cars.pdfcars', compact("cars"));
+        
+        // Download PDF
+        return $pdf->download('cars_list.pdf');
     }
 
 
