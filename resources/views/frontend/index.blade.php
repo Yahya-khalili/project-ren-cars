@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title> {{ config("app.name") }} </title>
 
     <!-- Bootstrap core CSS -->
@@ -63,8 +63,7 @@
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong title="passegengers"><i class="fa fa-user"></i></strong> {{ auth()->guard('client')->user()->fullName }}</a>
                   
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="">profile</a>
-                    <a class="dropdown-item" href="{{route("logout.logout")}}">bookings</a>
+                    
                     <a class="dropdown-item" href="{{route("logout.logout")}}">logout</a>
                     
                     
@@ -134,7 +133,7 @@
 
                 <h6><small>from </small> ${{$car->price}}<small> per weekend</small></h6>
 
-                <p>{{$car->description}}</p>
+                <p>{{substr($car->description , 0,75)}}... </p>
 
                 <small>
                     <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -144,11 +143,13 @@
                 </small>
 
                 <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                  
                 </span>
               </div>
             </div>
           </div>
+
+          
           @endforeach
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -452,6 +453,17 @@
       </div>
     </div>
 
+    @if (Session::has("message_sent"))
+    <script>
+      swal("Message","{{Session::get('message_sent')}}" , 'success',{
+        button:true,
+        button:"ok",
+
+      })
+    </script>
+        
+    @endif
+
     
     <div class="send-message"  >
       <div class="container" id="contactUs">
@@ -463,7 +475,7 @@
           </div>
           <div class="col-md-8">
             <div class="contact-form">
-              <form id="contact"  >
+              <form id="contact"  method="post" action="{{route("contactUs")}}">
                 @csrf
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12">
@@ -488,11 +500,12 @@
                   </div>
                   <div class="col-lg-12">
                     <fieldset>
-                      <button type="submit" id="form-submit" class="filled-button" onclick="sendEmail()">Send Message</button>
+                      <button type="submit" id="form-submit" class="filled-button" >Send Message</button>
                     </fieldset>
                   </div>
                 </div>
               </form>
+              
             </div>
           </div>
           <div class="col-md-4">

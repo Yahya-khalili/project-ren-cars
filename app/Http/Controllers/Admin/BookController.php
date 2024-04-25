@@ -38,6 +38,7 @@ class BookController extends Controller
      */
     public function store(bookRequest $request)
     {
+        dd($request->all());
         $FormFielsd = $request->validated();
         
         Booking::create($FormFielsd);

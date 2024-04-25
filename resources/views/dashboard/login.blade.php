@@ -16,6 +16,14 @@
     .login_img_section {
         background: linear-gradient(rgba(2,2,2,.7),rgba(0,0,0,.7)),url(https://images.unsplash.com/photo-1501066927591-314112b5888e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center center;
     }
+    .error-input {
+            border-color: #e53e3e; /* Red border color for errors */
+        }
+        .error-message {
+            color: #e53e3e; /* Red color for error messages */
+            font-size: 0.875rem; /* Adjust font size */
+            margin-top: 0.25rem; /* Add spacing */
+        }
 </style>
 
 <div class="h-screen flex">
@@ -29,21 +37,23 @@
                 @csrf
                 <h1 class="text-gray-800 font-bold text-2xl mb-1">Welcome Back Boss!</h1><br>
 
-                <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+                <div class="flex items-center border-2 @error('email') error-input @enderror mb-8 py-2 px-3 rounded-2xl">
                     <svg class="h-8 w-8 text-gray-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="4" />  <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" /></svg>
-                    <input id="email" class="pl-2 w-full outline-none border-none" type="email" name="email" placeholder="Email Address" />
+                    <input id="email" class="pl-2 w-full outline-none border-none  " type="email" name="email" placeholder="Email Address" />
                     @error('email')
-                <p class=" font-medium mt-2 text-sm text-red-600 dark:text-red-500"> {{$message}}</p>
+                <p class="error-message">{{ $message }}</p>
                 @enderror
                 </div>
                 
+                
+                
 
-                <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
+                <div class="flex items-center border-2 @error('password') error-input @enderror mb-12 py-2 px-3 rounded-2xl ">
                     <svg class="h-8 w-8 text-gray-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="8 16 10 10 16 8 14 14 8 16" />  <circle cx="12" cy="12" r="9" /></svg>
                     <input class="pl-2 w-full outline-none border-none" type="password" name="password" id="password" placeholder="Password" />
                     @error('password')
-                <p class=" font-medium mt-2 text-sm text-red-600 dark:text-red-500"> {{$message}}</p>
-                @enderror
+                    <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
                 
 

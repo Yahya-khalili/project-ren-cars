@@ -18,7 +18,7 @@ class isLogedIn
     {
         if (!Auth::guard('client')->check()) {
             // User is not logged in, redirect to the login page
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         return $next($request);

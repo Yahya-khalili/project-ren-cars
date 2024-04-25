@@ -39,6 +39,7 @@ class registerUserController extends Controller
 
     public function destroy(Client $client)
     {
+        
         $client->delete();
         return redirect('/dashboard/userAuth');
     }

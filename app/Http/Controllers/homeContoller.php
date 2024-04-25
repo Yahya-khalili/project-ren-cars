@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\userAuthRequest;
 use App\Models\Booking;
+use App\Models\BookingUser;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Car;
@@ -23,18 +24,12 @@ class homeContoller extends Controller
         return view("frontend.offers" ,compact("cars"));
         
     }
-    public function indexDash(){
-        $totalBookings = Booking::count();
-        $totalBrands = Brand::count();
-        $totalCars = Car::count();
-        $carPrices = Car::pluck('price');
-        $totalPrice = $carPrices->sum();
-        $totalClients = User::count();
-
-
-
-
-        return view('dashboard.index' , compact("totalBookings" ,"totalBrands" ,"totalCars" , "totalClients" , "totalPrice"));
+    public function book(){
+        
+        return view("frontend.bookSucc");
+        
     }
+
+    
     
 }

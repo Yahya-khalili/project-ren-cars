@@ -35,6 +35,7 @@ class CarController extends Controller
      */
     public function store(RequestsCarRequest $request)
     {
+        
         $formFields = $request->validated();
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('cars', 'public');
@@ -85,7 +86,7 @@ class CarController extends Controller
     public function searchCars(Request $request){
         $brands = Brand::all();
         $search = $request->search;
-        $cars = Car::where("type" ,"like" ,"%".$search."%")->get();
+        $cars = Car::where("nameCar" ,"like" ,"%".$search."%")->get();
         $noTasksFound = $cars->isEmpty();
         session()->flash('noTasksFound', $noTasksFound);
 

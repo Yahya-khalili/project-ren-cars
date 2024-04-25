@@ -31,7 +31,7 @@ class adminController extends Controller
         
         Session::flush();
         
-        Auth::logout();
+        Auth::guard('admin')->logout();
         
 
         // Redirect to the admin login page after logout

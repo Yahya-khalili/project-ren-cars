@@ -8,10 +8,14 @@ use App\Http\Controllers\admin\userController as AdminUserController;
 use App\Http\Controllers\admin\CarController as AdminCarController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\adminController;
+use App\Http\Controllers\Admin\BookingUser;
 use App\Http\Controllers\auth\loginController;
+use App\Http\Controllers\contactController;
+use App\Http\Controllers\User\BookigUserController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\registerUserController;
 use App\Http\Controllers\UserAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +29,8 @@ use App\Http\Controllers\UserAuthController;
 */
 
 Route::get('/',[homeContoller::class , "index"]);
-Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers");
+Route::get('/offers',[homeContoller::class , "indexOffers"])->name("indexOffers")->middleware("isLogedIn");
+Route::get('/booking-succes',[homeContoller::class , "book"])->name("bookSucc");
 
 
 
@@ -44,19 +49,27 @@ Route::post('/user/login',[LoginUserController::class , "login"])->name("login.l
 Route::get('/user/logout',[LoginUserController::class , "logout"])->name("logout.logout");
 
 
+Route::post('/offers',[BookigUserController::class , "store"])->name("bookingUser.store");
+
+
+
 Route::middleware(['admin'])->group(function () {
-Route::get('/dashboard',[homeContoller::class , "indexDash"])->name("indexDash");
+Route::get('/dashboard',[BookigUserController::class , "indexDash"])->name("indexDash");
 
     // Admin routes that require authentication
     Route::prefix('dashboard')->group(function () {
         Route::get('/userAuth',[registerUserController::class , "create"])->name("register.create");
         Route::delete('/userAuth/{client}',[registerUserController::class , "destroy"])->name("register.destroy");
+        Route::delete('/{bookUser}',[BookigUserController::class , "destroy"])->name("bookingUser.destroy");
+        Route::put('/approve/{id}',[BookigUserController::class , "approve"])->name("bookings.approve");
+        Route::put('/decline/{id}',[BookigUserController::class , "decline"])->name("bookings.decline");
 
 
         Route::resource('user', AdminUserController::class);
         Route::resource('cars', AdminCarController::class);
         Route::resource("brand",BrandController::class);
         Route::resource("book",BookController::class);
+        
     
         Route::get('searchBrand',[BrandController::class ,"searchBrand"])->name('brand.search');
         Route::get('searchBooking',[BookController::class ,"searchBooking"])->name('book.search');
@@ -75,5 +88,5 @@ Route::get('/dashboard',[homeContoller::class , "indexDash"])->name("indexDash")
 });
 
 
-
+Route::post("/contact-us" ,[contactController::class , "contact"] )->name("contactUs");
 
