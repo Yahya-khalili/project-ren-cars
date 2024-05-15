@@ -31,14 +31,14 @@
         <div class="bg-black opacity-20 inset-0 z-0"></div>
     </div>
 
-    <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8  w-1/2" >
-        <div class="w-full px-2 md:px-32 lg:px-30 ">
+    <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8  " >
+        <div class="w-full px-2 md:px-32 lg:px-30 h-96">
  
             <form class="bg-white rounded-md shadow-2xl p-5" method="post" action="{{route("register.store")}}">
                 @csrf
                 <h1 class="text-gray-800 font-bold text-2xl mb-1">Create your  Account</h1><br>
 
-                <div class="flex items-center border-2 @error('fullName') error-input @enderror mb-8 py-2 px-3 rounded-2xl">
+                <div class="flex items-center border-2 @error('fullName') error-input @enderror mb-2 py-2 px-3 rounded-2xl">
                     <svg class="h-8 w-8 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                       </svg>
@@ -47,7 +47,7 @@
                     <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex items-center border-2 @error('cin') error-input @enderror mb-8 py-2 px-3 rounded-2xl">
+                <div class="flex items-center border-2 @error('cin') error-input @enderror mb-2 py-2 px-3 rounded-2xl">
                     <svg class="h-8 w-8 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                       </svg>
@@ -56,14 +56,14 @@
                     <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex items-center border-2 @error('email') error-input @enderror mb-8 py-2 px-3 rounded-2xl">
+                <div class="flex items-center border-2 @error('email') error-input @enderror mb-2 py-2 px-3 rounded-2xl">
                     <svg class="h-8 w-8 text-gray-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="4" />  <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" /></svg>
                     <input id="email" class="pl-2 w-full outline-none border-none" type="email" name="email" placeholder="Email Address" />
                     @error('email')
                     <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex items-center border-2 @error('password') error-input @enderror mb-8 py-2 px-3 rounded-2xl">
+                <div class="flex items-center border-2 @error('password') error-input @enderror mb-2 py-2 px-3 rounded-2xl">
                     <svg class="h-8 w-8 text-gray-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="8 16 10 10 16 8 14 14 8 16" />  <circle cx="12" cy="12" r="9" /></svg>
                     <input id="password" class="pl-2 w-full outline-none border-none" type="password" name="password" placeholder="Password" />
                     @error('password')
@@ -72,7 +72,7 @@
                 </div>
                 
 
-                <div class="flex items-center border-2 @error('phone') error-input @enderror mb-12 py-2 px-3 rounded-2xl ">
+                <div class="flex items-center border-2 @error('phone') error-input @enderror mb-2 py-2 px-3 rounded-2xl ">
                     <svg class="h-8 w-8 text-gray-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
                     <input class="pl-2 w-full outline-none border-none" type="number" name="phone" id="phone" placeholder="Phone..." />
                     @error('phone')
