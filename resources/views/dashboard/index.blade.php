@@ -83,76 +83,66 @@
             <!-- Table Header -->
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">id</th>
-                    <th scope="col" class="px-6 py-3">user</th>
-                    <th scope="col" class="px-6 py-3">car</th>
-                    <th scope="col" class="px-6 py-3">pick-up-date  </th>
-                    <th scope="col" class="px-6 py-3">return-date-time</th>
-                    <th scope="col" class="px-6 py-3"> pick-up and return location</th>
-                    <th scope="col" class="px-6 py-3"> status</th>
-                    <th scope="col" class="px-6 py-3">action</th>
+                    <th scope="col" class="px-4 py-2">ID</th>
+                    <th scope="col" class="px-4 py-2">User</th>
+                    <th scope="col" class="px-4 py-2">Car</th>
+                    <th scope="col" class="px-4 py-2">Pick-up Date</th>
+                    <th scope="col" class="px-4 py-2">Return Date-Time</th>
+                    <th scope="col" class="px-4 py-2">Pick-up and Return Location</th>
+                    <th scope="col" class="px-4 py-2">Status</th>
+                    <th scope="col" class="px-4 py-2">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($bookingsUser as $bookUser)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> {{$bookUser->id}} </td>
-                    <td class="px-6 py-4">{{ $bookUser->client->fullName }}</td>
-                    <td class="px-6 py-4"> {{$bookUser->car->nameCar ?? '--'}} </td>
-    
-                    <td class="px-6 py-4"> {{  $bookUser->pick_up_date}} </td>
-                    <td class="px-6 py-4"> {{  $bookUser->return_date}} </td>
-                    <td class="px-6 py-4"> {{  $bookUser->pick_up_and_return_location}} </td>
-                    <td class="px-6 py-4"> {{  $bookUser->status}} </td>
-    
-                    <td class="px-6 py-4">
-                        
-                            <!-- Delete Form -->
-                            
-                            
-                           
-                            
-                            <form method="POST" action="{{ route('bookings.approve', $bookUser->id) }}" method="POST" class="inline-block">
+                    <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $bookUser->id }}</td>
+                    <td class="px-4 py-2">{{ $bookUser->client->fullName }}</td>
+                    <td class="px-4 py-2">{{ $bookUser->car->nameCar ?? '--' }}</td>
+                    <td class="px-4 py-2">{{ $bookUser->pick_up_date }}</td>
+                    <td class="px-4 py-2">{{ $bookUser->return_date }}</td>
+                    <td class="px-4 py-2">{{ $bookUser->pick_up_and_return_location }}</td>
+                    <td class="px-4 py-2">{{ $bookUser->status }}</td>
+                    <td class="px-4 py-2">
+                        <div class="inline-flex space-x-2">
+                            <!-- Approve Button -->
+                            <form method="POST" action="{{ route('bookings.approve', $bookUser->id) }}" class="inline-block">
                                 @method("PUT")
                                 @csrf
-                                <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300 ease-in-out shadow-md">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded-md transition-colors duration-300 ease-in-out shadow-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>Approve
+                                    </svg>
+                                    Approve
                                 </button>
-                               
                             </form>
-                            <form method="POST" action="{{ route('bookings.decline', $bookUser->id) }}" method="POST" class="inline-block">
+                            <!-- Decline Button -->
+                            <form method="POST" action="{{ route('bookings.decline', $bookUser->id) }}" class="inline-block">
                                 @method("PUT")
                                 @csrf
-                                <button type="submit" class="px-4 py-2 bg-red-500 text-white font-medium rounded-md transition-colors duration-300 ease-in-out shadow-md hover:bg-red-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <button type="submit" class="px-2 py-1 bg-red-500 text-white font-medium rounded-md transition-colors duration-300 ease-in-out shadow-md hover:bg-red-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>decline
-                                    
+                                    </svg>
+                                    Decline
                                 </button>
-                               
                             </form>
-                            <form method="POST" action="{{route("bookingUser.destroy" , $bookUser)}}" class="inline-block">
+                            <!-- Delete Button -->
+                            <form method="POST" action="{{ route('bookingUser.destroy', $bookUser) }}" class="inline-block">
                                 @method("DELETE")
                                 @csrf
-                                <button type="submit" class="px-4 py-2 bg-red-500 text-white font-medium rounded-md transition-colors duration-300 ease-in-out shadow-md hover:bg-red-600">Delete</button>
-                               
+                                <button type="submit" class="px-2 py-1 bg-red-500 text-white font-medium rounded-md transition-colors duration-300 ease-in-out shadow-md hover:bg-red-600">
+                                    Delete
+                                </button>
                             </form>
-                            
-                            <!-- Update Button -->
-
-                            
-                            
-                            
-                            
-                            
-                        </td>
-                    </tr>
-
+                        </div>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
+    
     </div>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
