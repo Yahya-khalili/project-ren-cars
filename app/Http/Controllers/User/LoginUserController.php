@@ -33,7 +33,7 @@ class LoginUserController extends Controller
     public function logout()
     {
         
-        Session::flush();
+        
         
         Auth::guard('client')->logout();
         

@@ -31,8 +31,8 @@
         <div class="bg-black opacity-20 inset-0 z-0"></div>
     </div>
 
-    <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
-        <div class="w-full px-8 md:px-32 lg:px-24">
+    <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8  w-1/2" >
+        <div class="w-full px-2 md:px-32 lg:px-30 ">
  
             <form class="bg-white rounded-md shadow-2xl p-5" method="post" action="{{route("register.store")}}">
                 @csrf

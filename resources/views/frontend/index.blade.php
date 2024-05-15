@@ -53,11 +53,11 @@
                 </li> 
 
                 
-                <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" href="#offers">Offers </a></li>
 
                 <li class="nav-item"><a class="nav-link" href="#aboutUs">About Us</a></li>
                 
-                <li class="nav-item" id="yahya"><a class="nav-link" >Contact Us</a></li>
+                <li class="nav-item" id="yahya"><a class="nav-link" href="#contact  " >Contact Us</a></li>
                 @auth('client')
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong title="passegengers"><i class="fa fa-user"></i></strong> {{ auth()->guard('client')->user()->fullName }}</a>
@@ -509,9 +509,9 @@
             </div>
           </div>
           <div class="col-md-4">
-            <img src="assets/images/yaha.jpg" class="img-fluid" alt="">
+            
 
-            <h5 class="text-center" style="margin-top: 15px;">Yahya khalili</h5>
+           
           </div>
         </div>
       </div>
