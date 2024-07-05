@@ -195,12 +195,14 @@
                         <div class="row">
                              <div class="col-md-6">
                                 <fieldset>
+                                    Pick-up date
                                   <input type="date" class="form-control"  name="pick_up_date" placeholder="Pick-up date" >
                                 </fieldset>
                              </div>
       
                              <div class="col-md-6">
                                 <fieldset>
+                                  Return date
                                   <input type="date" class="form-control" name="return_date" placeholder="Return date" >
                                 </fieldset>
                              </div>
